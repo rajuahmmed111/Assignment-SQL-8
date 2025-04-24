@@ -82,7 +82,41 @@ const returnBook = async (borrowId: string) => {
   });
 };
 
+// overdue borrow list
+const overdueBorrowList = async () => {
+  const currentDate = new Date();
+  const overdueBorrows = await prisma.borrowRecord.findMany({
+    where: {
+      returnDate: null,
+      borrowDate: {
+        lte: new Date(currentDate.setDate(currentDate.getDate() - 14)),
+      },
+    },
+    select: {
+      borrowId: true,
+      book: {
+        select: {
+          title: true,
+        },
+      },
+      member: {
+        select: {
+          name: true,
+        },
+      },
+      borrowDate: true,
+    },
+  });
+
+  if (!overdueBorrows || overdueBorrows.length === 0) {
+    throw new ApiError(httpStatus.NOT_FOUND, "No overdue borrows found");
+  }
+
+  return overdueBorrows;
+};
+
 export const BorrowService = {
   bookBorrow,
   returnBook,
+  overdueBorrowList,
 };
