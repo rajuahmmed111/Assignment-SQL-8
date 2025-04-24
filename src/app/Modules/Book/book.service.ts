@@ -42,7 +42,7 @@ const updateBookById = async (id: string, payload: any) => {
   });
 
   if (!existingBook) {
-    throw new Error(`Book with ID ${id} not found.`);
+    throw new ApiError(httpStatus.NOT_FOUND, "Book not found");
   }
 
   const updatedBook = await prisma.book.update({
@@ -60,7 +60,7 @@ const deleteBookById = async (id: string) => {
   });
 
   if (!existingBook) {
-    throw new Error(`Book not found.`);
+    throw new ApiError(httpStatus.NOT_FOUND, "Book not found");
   }
 
   await prisma.book.delete({
