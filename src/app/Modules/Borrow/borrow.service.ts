@@ -66,6 +66,11 @@ const returnBook = async (borrowId: string) => {
     throw new ApiError(httpStatus.NOT_FOUND, "Borrow record not found");
   }
 
+  // return validate
+  if (existingBorrow?.returnDate) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Book already returned");
+  }
+
   // return book
   await prisma.borrowRecord.update({
     where: {
