@@ -17,37 +17,47 @@ datasource db {
 //          Models
 // --------------------------
 
-
 model Book {
-  bookId         String         @id @default(uuid())
-  title          String
-  genre          String
-  publishedYear  Int
-  totalCopies    Int
+  bookId          String   @id @default(uuid())
+  title           String
+  genre           String
+  publishedYear   Int
+  totalCopies     Int
   availableCopies Int
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 
-  borrowRecords  BorrowRecord[] // One-to-many relation with BorrowRecord
+  borrowRecords BorrowRecord[] // One-to-many relation with BorrowRecord
+
+  @@map("books")
 }
 
 model Member {
-  memberId       String         @id @default(uuid())
+  memberId       String   @id @default(uuid())
   name           String
-  email          String         @unique
+  email          String   @unique
   phone          String
   membershipDate DateTime
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
 
-  borrowRecords  BorrowRecord[] // One-to-many relation with BorrowRecord
+  borrowRecords BorrowRecord[] // One-to-many relation with BorrowRecord
+
+  @@map("members")
 }
 
 model BorrowRecord {
-  borrowId   String   @id @default(uuid())
+  borrowId   String    @id @default(uuid())
   borrowDate DateTime
   returnDate DateTime?
 
-  bookId     String
-  memberId   String
+  bookId   String
+  memberId String
 
-  book       Book     @relation(fields: [bookId], references: [bookId])
-  member     Member   @relation(fields: [memberId], references: [memberId])
+  book      Book     @relation(fields: [bookId], references: [bookId])
+  member    Member   @relation(fields: [memberId], references: [memberId])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("borrow_records")
 }
-

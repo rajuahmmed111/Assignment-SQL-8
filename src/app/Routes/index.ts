@@ -1,10 +1,13 @@
 import express from "express";
-
+import { bookRoutes } from "../Modules/Book/book.route";
 
 const router = express.Router();
 
 const moduleRoutes = [
-
+  {
+    path: "/books",
+    route: bookRoutes,
+  },
 ];
 
 moduleRoutes.forEach((route) => {
