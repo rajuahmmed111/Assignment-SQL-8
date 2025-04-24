@@ -41,10 +41,19 @@ const bookBorrow = async (payload: any) => {
       memberId,
       borrowDate: new Date(),
     },
+    select: {
+      borrowId: true,
+      borrowDate: true,
+      bookId: true,
+      memberId: true,
+      createdAt: true,
+      updatedAt: true,
+    },
   });
 
   return result;
 };
+
 
 export const BorrowService = {
   bookBorrow,
