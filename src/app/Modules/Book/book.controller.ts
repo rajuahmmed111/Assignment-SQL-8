@@ -1,7 +1,7 @@
 import catchAsync from "../../../Shared/catchAsync";
 import sendResponse from "../../../Shared/sendResponse";
 import { BookService } from "./book.service";
-
+import httpStatus from "http-status";
 // create book
 const createBook = catchAsync(async (req, res) => {
   const data = req.body;
@@ -9,7 +9,7 @@ const createBook = catchAsync(async (req, res) => {
   const result = await BookService.createBook(data);
 
   sendResponse(res, {
-    statusCode: 200,
+    statusCode: httpStatus.CREATED,
     success: true,
     message: "Book created successfully",
     data: result,
