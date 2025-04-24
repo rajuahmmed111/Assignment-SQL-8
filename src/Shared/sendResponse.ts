@@ -13,6 +13,7 @@ const sendResponse = <T>(
     };
     data?: T | null | undefined;
     // error?: string | null | undefined;
+    status?: number;
   }
 ) => {
   res.status(jsonData.statusCode).json({
@@ -21,6 +22,7 @@ const sendResponse = <T>(
     meta: jsonData.meta || null || undefined,
     data: jsonData.data || null || undefined,
     // error: jsonData.error || null || undefined,
+    status: jsonData.status || null || undefined,
   });
 };
 

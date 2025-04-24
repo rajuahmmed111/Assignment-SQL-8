@@ -54,7 +54,30 @@ const bookBorrow = async (payload: any) => {
   return result;
 };
 
+// return a book
+const returnBook = async (borrowId: string) => {
+  // borrow validate
+  const existingBorrow = await prisma.borrowRecord.findUnique({
+    where: {
+      borrowId,
+    },
+  });
+  if (!existingBorrow) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Borrow record not found");
+  }
+
+  // return book
+  await prisma.borrowRecord.update({
+    where: {
+      borrowId,
+    },
+    data: {
+      returnDate: new Date(),
+    },
+  });
+};
 
 export const BorrowService = {
   bookBorrow,
+  returnBook,
 };
