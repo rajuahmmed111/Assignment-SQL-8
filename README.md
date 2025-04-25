@@ -31,7 +31,7 @@ A robust backend API for managing a Library Management System. This API allows l
 git clone https://github.com/rajuahmmed111/Assignment-SQL-8.git
 cd Assignment-SQL-8
 npm install
-DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+DATABASE_URL=postgresql://medical_health_care_user:SYxx1lsmWvEhqNvmQJJ2YyeMX4ENIV1W@dpg-d05gfgbuibrs73fm2oc0-a.oregon-postgres.render.com/medical_health_care
 PORT=5000
 npx prisma migrate dev --name init
 npx prisma generate
