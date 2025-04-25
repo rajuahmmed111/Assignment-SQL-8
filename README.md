@@ -6,7 +6,7 @@ A robust backend API for managing a Library Management System. This API allows l
 
 ## 🔗 Live URL
 
-[https://your-live-url-here.com](https://your-live-url-here.com)
+[https://assignment-sql-8-ka78ycagc-rajus-projects-dcd189e1.vercel.app/](https://assignment-sql-8-ka78ycagc-rajus-projects-dcd189e1.vercel.app/)
 
 ---
 
@@ -38,8 +38,6 @@ npx prisma generate
 npm run dev
 ```
 
-
-
 🧠 Key Features & Functionality
 📘 Book Management
 Create a Book: POST /api/books
@@ -70,7 +68,6 @@ Return a Book: POST /api/return
 
 🕐 Overdue Tracking (Bonus)
 List Overdue Books: GET /api/borrow/overdue
-
 
 🐞 Known Issues/Bugs
 Book availability is not yet restricted to ensure atomic transactions (can cause race conditions under heavy traffic).
