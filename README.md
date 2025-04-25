@@ -6,7 +6,11 @@ A robust backend API for managing a Library Management System. This API allows l
 
 ## 🔗 Live URL
 
-[https://assignment-sql-8-ka78ycagc-rajus-projects-dcd189e1.vercel.app/](https://assignment-sql-8-ka78ycagc-rajus-projects-dcd189e1.vercel.app/)
+[https://assignment-sql-8.vercel.app/](https://assignment-sql-8.vercel.app/)
+
+## 🔗 Postman documentation
+
+[https://documenter.getpostman.com/view/40219022/2sB2izDtWk](https://documenter.getpostman.com/view/40219022/2sB2izDtWk)
 
 ---
 
